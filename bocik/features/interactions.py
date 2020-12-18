@@ -2,6 +2,22 @@ import random
 
 random.seed()
 
+help_list = [
+    "```"
+    "By rzucić kością: [losuj, rzuć, rzucić][kości, kość]",
+    "By rzucić 8ball: [losuj, rzuć, rzucić][8ball, ball][czy, ?]",
+    "By rzucić monetą: [losuj, rzuć, rzucić][moneta, monetę]",
+    "By się przywitać: [hej, cześć, siema, witaj][bot, bocie]",
+    "By się pożegnać: [żegnaj, papa, do widzenia, dobranoc, dowidzenia, narazie][bot, bocie]",
+    "By zapytać o komplement: [komplement, coś miłego][mnie, mi]",
+    "By poprosić o żart: [powiedz, podaj, dawaj][żart, kawał]",
+    "Bajo jajo: [bajo, jajo]",
+    "By poprosić o kotki: [daj, zapodaj][kotka, kotki, kota][gif]",
+    "By poprosić o ćwiczenia: [daj, zapodaj, trening, jak zrobić][biceps, triceps, brzuch, klat, nog, bark, plec, przedramion]",
+    "By sprawdzić pogodę: [podaj, zapodaj, czy, będzie][pogod, ciepło, padać, śnieg][krakow, kraków, londyn, london]",
+    "```"
+]
+
 hello_list = [
     "...",
     "No hejka",
@@ -52,3 +68,7 @@ def get_compliment():
 
 def get_joke():
     return random.choice(joke_list)
+
+
+def get_help():
+    return "\n".join(help_list)

@@ -4,7 +4,7 @@ from youtubesearchpython import SearchVideos
 
 
 def get_athlean_link(keyword):
-    search = SearchVideos("ATHLEAN-X™", offset=5, mode="dict", max_results=20)
+    search = SearchVideos("ATHLEAN-X™", offset=5, mode="dict", max_results=100)
     keyword_link_list = []
     for video in search.result()['search_result']:
         if video['title'].lower().find(keyword) != -1:

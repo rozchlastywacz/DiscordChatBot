@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands, tasks
 
 from bocik import token_holder
-from bocik.features import message_checker
+from bocik.features import message_checker, interactions
 
 intents = discord.Intents.default()
 intents.members = True
@@ -28,6 +28,8 @@ async def on_message(message):
         print(message.author.display_name + ": " + message.content)
         message.content = message.content.lower()
         if not message.content.startswith("."):
+            # get help
+            await check_and_send(message, message_checker.check_for_help(message))
             # say hello
             await check_and_send(message, message_checker.check_for_hello(message))
             # say bye
@@ -55,6 +57,8 @@ async def on_message(message):
 async def check_and_send(message, tmp):
     if tmp != "":
         await message.channel.send(tmp)
+    # elif:
+    #     await message.channel.send("Jeśli coś odemnie chcesz, to ja nie wiem o co Ci chodzi...")
 
 
 @client.event

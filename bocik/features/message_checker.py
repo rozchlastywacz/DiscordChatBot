@@ -7,6 +7,15 @@ from bocik.features.weather import get_weather_at_city
 from bocik.features.youtube_searching import get_athlean_link
 
 
+def check_for_help(message):
+    print("check for help")
+    if message.content.find("pomocy") != -1 or message.content.find("help") != -1 or message.content.find("dzialasz") != -1:
+        if message.content.find("bocie") != -1 or message.content.find("bot") != -1:
+            print(get_help())
+            return get_help()
+    return ""
+
+
 def check_for_dice(message):
     if message.content.find("losuj") != -1 or message.content.find("rzuć") != -1 or message.content.find(
             "rzucić") != -1:
@@ -36,15 +45,16 @@ def check_for_hello(message):
     if message.content.startswith("hej") or message.content.startswith("cześć") or message.content.startswith(
             "siema") or message.content.startswith("witaj"):
         if message.content.find("bot") != -1 or message.content.find("bocie") != -1:
-            return get_hello()
+            return get_hello() + " " + message.author.name
     return ""
 
 
 def check_for_bye(message):
     if message.content.startswith("żegnaj") or message.content.startswith("papa") or message.content.startswith(
-            "do widzenia") or message.content.startswith("dobranoc") or message.content.startswith("dowidzenia") or message.content.startswith("narazie"):
+            "do widzenia") or message.content.startswith("dobranoc") \
+            or message.content.startswith("dowidzenia") or message.content.startswith("narazie"):
         if message.content.find("bot") != -1 or message.content.find("bocie") != -1:
-            return get_bye()
+            return get_bye() + " " + message.author.name
     return ""
 
 
@@ -56,7 +66,7 @@ def check_for_compliment(message):
 
 
 def check_for_joke(message):
-    if message.content.find("powiedz") != -1 or message.content.find("zapodaj") != -1:
+    if message.content.find("powiedz") != -1 or message.content.find("podaj") != -1 or message.content.find("dawaj") != -1:
         if message.content.find("żart") != -1 or message.content.find("kawał") != -1:
             return get_joke()
     return ""
@@ -64,7 +74,7 @@ def check_for_joke(message):
 
 def check_for_bajo_jajo(message):
     if message.content.find("bajo") != -1 or message.content.find("jajo") != -1:
-        return f"Ja Ci dam bajo jajo, na {message.channel.name} chamie Ty!\n"
+        return f"Ja Ci dam bajo jajo, na {message.channel.name} chamie Ty, wiem, że to Ty {message.author.name}!\n"
     return ""
 
 
@@ -94,6 +104,10 @@ def check_for_exercise(message):
             return get_athlean_link("legs")
         if message.content.find("bark") != -1:
             return get_athlean_link("shoulder")
+        if message.content.find("plec") != -1:
+            return get_athlean_link("back")
+        if message.content.find("przedramion") != -1:
+            return get_athlean_link("forearm")
     return ""
 
 
